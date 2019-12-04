@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 const axios = require("axios");
 const cheerio = require("cheerio");
 
@@ -9,22 +10,28 @@ const app = express();
 
 // Mongo configuration to the db variable
 // const config = require('./config/database')
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(MONGODB_URI)
+  .connect(MONGODB_URI, {
+    // .connect(config.database, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+  })
   .then( result => {
     console.log(`Connected to database '${result.connections[0].name}' on ${result.connections[0].host}:${result.connections[0].port}`);
   })
   .catch(err => console.log('There was an error with your connection:', err));
 
 //setting up body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 //handlebars middleware
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({defaultLayout: 'index'}));
 app.set('view engine', 'handlebars');
 
 //static directory
