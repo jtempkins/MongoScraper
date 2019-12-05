@@ -1,5 +1,5 @@
 const express = require("express");
-  router = express.Router();
+const router = express.Router();
 const axios = require ("axios");
 const cheerio = require("cheerio");
 let scrapedArticles = [];
@@ -22,6 +22,9 @@ router.get('/', (req,res) => {
     })
     console.log(scrapedArticles)
 
-    res.send(scrapedArticles)
+    res.render("home", {
+        data: scrapedArticles
+    })
+    // res.send(scrapedArticles)
 });
 module.exports = router
