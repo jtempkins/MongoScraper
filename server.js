@@ -27,6 +27,7 @@ app.use(express.urlencoded({extended: false}));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+
 //static directory
 app.use(express.static('public'));
 // app.use('/article',express.static(path.join(__dirname, 'public')));
@@ -46,6 +47,6 @@ app.use(require("./routes/articles"));
 // app.use('/scrape', scrape);
 
 // Listen on port 3000
-app.listen(3000, function() {
-  console.log("App running on port 3000!");
+app.listen(3010, function() {
+  console.log("App running on port 3010!");
 });

@@ -1,7 +1,7 @@
-var scrape = require("../scripts/scrape");
+var scrape = require("../routes/scrape");
 
-var articlesController = require("../scripts/articles");
-var notesController = require("../scripts/notes");
+var articlesController = require("../routes/articles");
+var notesController = require("../routes/notes");
 
 
 

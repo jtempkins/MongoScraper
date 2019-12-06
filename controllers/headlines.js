@@ -28,8 +28,3 @@ module.exports = {
     }
 
 }
-
-
-
-
-}

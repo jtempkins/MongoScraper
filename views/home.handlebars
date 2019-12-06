@@ -6,13 +6,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Scrape Articles <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/saved">Saved Articles</a>
       </li>
-      <button type="button" class="btn btn-success">Scrape New Articles!</button>
-    </ul>
+      {{!-- <button type="button" class="btn btn-success" id="scrapeButton">Scrape New Articles!</button>
+    </ul> --}}
   </div>
 </nav>
 {{!-- Jumbotron Header --}}
@@ -24,7 +24,9 @@
 </div>
 
 {{#each data}}
-<div class="row">
+  <div class="container">
+<div class="rowA">
+  <div class-"col-sm-8">
 <p>{{this.headline}}</p>
 <p>{{this.summary}}</p>
 <p>{{this.url}}</p>
@@ -32,7 +34,8 @@
 {{this.headline}}
 data-summary={{this.summary}}
 data-url={{this.url}}>Save Article</button>
-
+  </div>
+</div>
 </div>
 {{/each}}
 

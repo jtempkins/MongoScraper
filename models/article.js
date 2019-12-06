@@ -7,7 +7,7 @@ const articleSchema = new Schema({
     unique: true
   },
   summary: String,
-  storyUrl: String,
+  Url: String,
   saved: {
     type: Boolean,
     default: false
