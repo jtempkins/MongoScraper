@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const exphbs = require('express-handlebars');
 const axios = require("axios");
 const cheerio = require("cheerio");
+const PORT = process.env.PORT || 3000;
 
 // Initialize Express
 const app = express();
@@ -46,7 +47,10 @@ app.use(require("./routes/articles"));
 // app.use('/notes', notes);
 // app.use('/scrape', scrape);
 
-// Listen on port 3000
-app.listen(3010, function() {
-  console.log("App running on port 3010!");
+app.listen(PORT, function() {
+  console.log("App running on port " + PORT + "!");
 });
+// Listen on port 3000
+// app.listen(3010, function() {
+//   console.log("App running on port 3010!");
+// });

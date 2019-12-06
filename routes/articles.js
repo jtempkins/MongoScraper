@@ -22,7 +22,8 @@ router.post("/articles/save/", (req, res) => {
   console.log("do we have anything?", req.body)
   db.Article
   .create(req.body)
-  .then(result => res.send("article saved", result))
+  .then(result => res.status("article saved", result).send(result))
+  // .then(result => res.send("article saved", result))
   .catch(err => res.json(err));
 });
 
