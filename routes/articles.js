@@ -6,7 +6,7 @@ const express = require("express");
 router.get('/save/:id', (req,res) => {
   db.Article
     .update({_id: req.params.id}, {saved: true})
-    .then(result=> res.redirect('/'))
+    .then(res=> res.redirect('/'))
     .catch(err => res.json(err));
 });
 
@@ -14,7 +14,7 @@ router.get('/save/:id', (req,res) => {
 router.get('/savedArticles', (req,res) => {
   db.Article
     .find({})
-    .then(result => res.render('savedArticles', {articles:result}))
+    .then(res => res.render('savedArticles', {articles:res}))
     .catch(err => res.json(err));
 });
 
@@ -22,7 +22,8 @@ router.post("/articles/save/", (req, res) => {
   console.log("do we have anything?", req.body)
   db.Article
   .create(req.body)
-  .then(result => res.status("article saved", result).send(result))
+  console.log(req.body)
+  .then(res => res.status("article saved").send(res))
   // .then(result => res.send("article saved", result))
   .catch(err => res.json(err));
 });
@@ -31,7 +32,7 @@ router.post("/articles/save/", (req, res) => {
 router.delete('/deleteArticles/:id', function(req,res){
   db.Article
     .remove({_id: req.params.id})
-    .then(result => res.json(result))
+    .then(res => res.json(result))
     .catch(err => res.json(err));
 });
 
